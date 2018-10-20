@@ -26,11 +26,19 @@ namespace Lab10
                     {
                         isValid = true;
                         Console.WriteLine("Enter radius:");
-                        radius = double.Parse(Console.ReadLine());
+                        input = Console.ReadLine();
+
+                        if (!Validator.IsValidDouble(input))
+                        {
+                            throw new FormatException("Invalid value, please re-enter");
+                        }
+
+                        radius = double.Parse(input);
                     }
-                    catch (Exception ex)
+                    catch (FormatException ex)
                     {
-                        Console.WriteLine("Enter a valid value.");
+                        Console.WriteLine(ex.Message);
+
                         isValid = false;
                     }
                 } while (!isValid);
