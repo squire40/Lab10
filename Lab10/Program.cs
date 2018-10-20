@@ -51,9 +51,22 @@ namespace Lab10
 
                 Console.WriteLine($"Area: {c.CalculateFormattedArea()}");
 
-                Console.WriteLine("Continue? y/n");
+                do
+                {
+                    isValid = true;
 
-                shouldContinue = Console.ReadLine().Equals("y", StringComparison.InvariantCultureIgnoreCase);
+                    Console.WriteLine("Continue? y/n");
+
+                    input = Console.ReadLine();
+
+                    if (!Validator.IsYesOrNo(input))
+                    {
+                        Console.WriteLine("Invalid response.  Enter y or n");
+                        isValid = false;
+                    }
+
+                    shouldContinue = input.Equals("y", StringComparison.InvariantCultureIgnoreCase);
+                } while (!isValid);
 
             } while (shouldContinue);
 
